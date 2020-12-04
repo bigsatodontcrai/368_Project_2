@@ -88,8 +88,8 @@ function testHealth ()
  */
 function testWin()
 {
-    sprite.x = 810;
-    if (sprite.x == 810)
+    sprite.x = 810*2;
+    if (sprite.x == 810*2)
     {
         test2Invalid++;
         console.log("Game winning works!");

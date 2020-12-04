@@ -8,7 +8,7 @@
  * @return number
  */
 function findIndexFromCoordinate(x, y) {
-    let temp1 = (50 * (y / 16)) - 1;
+    let temp1 = (60 * (y / 16)) - 1;
     let temp2 = x / 16;
     return temp1 + temp2;
 
@@ -112,17 +112,17 @@ function newSpriteArray(box) {
  * constructFromArray - contructs platformSprites and hurtboxes from the given platform array
  * @param {number} platformArray 
  */
-function constructFromArray(platformArray) {
-    let newResource = PIXI.Loader.shared.resources['./Assets/AssetsOrig.json'].spritesheet;
-    for (let i = 0; i < 50 * 15; i++) {
-        if (platformArray[i] != 0 && platformArray[i] != 14) {
+function constructFromArray(platformArray, immutable) {
+    let newResource = PIXI.Loader.shared.resources['./Assets/ashlands_tileset.json'].spritesheet;
+    for (let i = 0; i < 60 * 30; i++) {
+        if (platformArray[i] != 0) {
 
             let index = platformArray[i] - 1;
-            let loc = 'Assets' + index + '.png';
+            let loc = 'ashlands_tileset' + index + '.png';
 
             platformSprites[i] = new PIXI.Sprite(newResource.textures[loc]);
-            platformSprites[i].x = (i % 50) * 16;
-            let yloc = Math.floor(i / 50);
+            platformSprites[i].x = (i % 60) * 16;
+            let yloc = Math.floor(i / 60);
             platformSprites[i].y = (yloc + 1) * 16;
             platformSprites[i].width = 16;
             platformSprites[i].height = 16;
@@ -130,13 +130,19 @@ function constructFromArray(platformArray) {
 
 
             constantHurtBox[i] = new hurtBox(platformSprites[i]);
-            constantHurtBox[i].immutable = true;
+            constantHurtBox[i].immutable = immutable;
             constantHurtBox[i].calculateEdges();
             container.addChild(platformSprites[i]);
-            if (platformArray[i] == 12) {
+            /*if (platformArray[i] == 12) {
                 constantHurtBox[i].gate = true;
+            }*/
+            if(platformArray[i] == 366 || platformArray[i] == 367|| platformArray[i] == 368 || platformArray[i] == 369){
+                constantHurtBox[i].coins = true;
             }
-        } else if (platformArray[i] == 14) {
+            if(platformArray[i] == 268){
+                constantHurtBox[i].immutable = false;
+            }
+        } /*else if (platformArray[i] == 14) {
             platformSprites[i] = new PIXI.AnimatedSprite(newResource.animations.coins);
             platformSprites[i].x = (i % 50) * 16;
             let yloc = Math.floor(i / 50);
@@ -153,7 +159,7 @@ function constructFromArray(platformArray) {
             platformSprites[i].play();
             container.addChild(platformSprites[i]);
 
-        }
+        }*/
         else {
 
 

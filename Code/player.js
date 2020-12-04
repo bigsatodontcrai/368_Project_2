@@ -15,8 +15,8 @@ function setupCharacter(){
     sprite.height = 35;
     sprite.width = 47;
     sprite.anchor.set(0.5, 0);
-    sprite.x = 32;
-    sprite.y = 192 - (16*4);
+    sprite.x = 64;
+    sprite.y = 192 - (16*2);
     sprite.play();
     sprite.animationSpeed = 0.1;
 
@@ -246,7 +246,7 @@ function playCharacter(){
                     alert('you died.');
                     gameController.vx = 0;
                     gameController.vy = 0;
-                    sprite.x = 16;
+                    sprite.x = 16*40;
                     sprite.y = 192 - (16 * 8);
                     hearts = 3;
                     for (let i = 0; i < 3; i++) {
@@ -291,7 +291,7 @@ function playCharacter(){
 
 
 
-        if(sprite.x >= 810){
+        if(sprite.x >= 810*2){
             //alert('On to the next level!');
             if (test2Invalid == 1)
             {
@@ -300,8 +300,8 @@ function playCharacter(){
             }
             else if (test2Invalid > 1)
             {
-                sprite.x = 16;
-                sprite.y = 192 - (16 * 8);
+                sprite.x = 16*5-8;
+                sprite.y = -8;
                 console.log('done'); 
                 let truth = enemyArray.find(enemyBox => enemyBox.dead == false);
                 if(coinCounter >= 100 && truth == undefined){

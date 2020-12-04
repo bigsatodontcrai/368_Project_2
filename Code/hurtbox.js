@@ -213,10 +213,11 @@ class hurtBox {
             container.removeChild(this.sprite);
             container.removeChild(text);
             coinCounter++;
-            text = new PIXI.Text('Coins: ' + coinCounter, { fontFamily: 'Helvetica', fontSize: 12, fill: 0xF00000, align: 'center' });
+            text = new PIXI.Text('Bones: ' + coinCounter, { fontFamily: 'Helvetica', fontSize: 12, fill: 0xF00000, align: 'center' });
             text.x = 16 * 4;
             container.addChild(text);
             this.coins = false;
+            this.immutable = false;
             coinCollection();
         }
         if(hori != 0 && controller.vy == 0){

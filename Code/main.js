@@ -18,20 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //const level = import('./Assets/Platforms.json');
     container = new PIXI.Container();
-    text = new PIXI.Text('Coins: ' + coinCounter, { fontFamily: 'Helvetica', fontSize: 12, fill: 0xF00000, align: 'center' });
+    text = new PIXI.Text('Bones: ' + coinCounter, { fontFamily: 'Helvetica', fontSize: 12, fill: 0xF00000, align: 'center' });
     text.x = 16*4;
     
     
     //makePlatforms(level);
 
-    let loadScene = PIXI.Loader.shared.add('./Assets/AssetsOrig.json');
+    let loadScene = PIXI.Loader.shared.add('./Assets/ashlands_tileset.json');
     let loadPlayer = PIXI.Loader.shared.add('./Assets/rpg-girl.json');
     let loadEnemy = PIXI.Loader.shared.add('./Assets/Walk.json');
     
     loadScene.load(() => {
         
         
-        constructFromArray(platformArray);
+        constructFromArray(platformArray, false);
+        constructFromArray(platform2, false);
+        constructFromArray(platform3, true);
         
         for(let i = 0; i < 3; i++){
             heartArray[i] = new PIXI.Sprite.from('./Assets/heart.png');
