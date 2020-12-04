@@ -63,10 +63,7 @@ class hurtBox {
         this.x = this.leftEdge;
         this.y = this.topEdge;
 
-        console.log(this.x);
-        console.log(this.sprite.x);
-        console.log(this.y);
-        console.log(this.sprite.y);
+        
 
         this.nextX = this.x;
         this.nextY = this.y;

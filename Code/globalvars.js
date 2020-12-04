@@ -84,6 +84,9 @@ let Forward = 1;
 let arrayOfIndex = new Array(8);
 let arrayOfSprites = new Array(8);
 
+let beastX = 0;
+let beastY = 0;
+
 let platformSprites = new Array(50 * 15);
 let constantHurtBox = new Array(50 * 15);
 

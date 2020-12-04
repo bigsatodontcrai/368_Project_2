@@ -20,6 +20,11 @@ function setupCharacter(){
     sprite.play();
     sprite.animationSpeed = 0.1;
 
+    beastX = Math.floor(60 * 16 * Math.random());
+    console.log(beastX);
+    beastY = Math.floor(30 * 16 * Math.random());
+    console.log(beastY);
+
     spriteHurtBox = new hurtBox(sprite);
     spriteHurtBox.calculateCharEdges();
     gameController = new controller(sprite);
@@ -296,7 +301,7 @@ function playCharacter(){
             alert('You found all the bones. Now, find where the beasts are hiding!');
             coinCounter++;
         }
-        if(coinCounter >= 100 && sprite.x <= 469 && sprite.x >= 450 && sprite.y <= 240 && sprite.y >= 216){
+        if(coinCounter >= 100 && sprite.x <= 469 && sprite.x >= (469 - 19) && sprite.y <= 240 && sprite.y >= (240 - 24)){
             alert('The Beasts are here!');
             container.removeChildren();
             coinCounter = 0;
