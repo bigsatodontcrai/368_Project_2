@@ -2,7 +2,29 @@
 "animations": {
         "idle": [
             "rpg-girl14.png",
+            "rpg-girl14.png",
+            "rpg-girl14.png",
+            "rpg-girl14.png",
+            "rpg-girl15.png",
+            "rpg-girl15.png",
             "rpg-girl15.png"
+        ],
+        "idle_up": [
+            "rpg-girl0.png",
+            "rpg-girl0.png",
+            "rpg-girl0.png",
+            "rpg-girl1.png",
+            "rpg-girl1.png",
+            "rpg-girl2.png",
+            "rpg-girl2.png",
+            "rpg-girl2.png",
+            "rpg-girl2.png"
+        ],
+        "idle_hori": [
+            "rpg-girl21.png",
+            "rpg-girl22.png",
+            "rpg-girl22.png",
+            "rpg-girl22.png"
         ],
         "running": [
             "rpg-girl88.png",

@@ -1,12 +1,12 @@
 let game;
 let app;
-let state = 'choose a move';
+let this_state = 'choose a move';
 
 let yourMove;
 let turnMove;
 
 let sprites = new Array(18);
-let background;
+let this_background;
 let huddy;
 let hphud1;
 let hphud2;
@@ -19,8 +19,8 @@ let myDamage = 0;
 let turnTimer = 0;
 let turnOppTimer = 0;
 
-let platform1;
-let platform2;
+let this_platform1;
+let this_platform2;
 let currentSprite;
 let currentMoves = new Array(4);
 let thebody;
@@ -31,7 +31,7 @@ let enemyMove = false;
 
 function createCanvas() {
 
-    game = document.createElement('canvas');
+    /*game = document.createElement('canvas');
     game.className = 'game';
     game.height = 1000;
     game.width = 1000;
@@ -46,11 +46,12 @@ function createCanvas() {
         }
     );
 
-    container = new PIXI.Container();
+    container = new PIXI.Container();*/
 
     console.log(myTeam);
     myTeam.forEach(creatures => {
         console.log(creatures);
+        console.log(dragon);
         console.log(findCreatureByImage(creatures));
     })
     let myMons = myTeam.map(creatures => findCreatureByImage(creatures));
@@ -83,9 +84,9 @@ function createCanvas() {
 
     let hudcontainer = new PIXI.Container();
 
-    background = PIXI.Sprite.from('./Assets/battle-background-sunny-hillsx4.png');
-    background.scale.x = 0.8;
-    container.addChild(background);
+    this_background = PIXI.Sprite.from('./Assets/lavaBG.jpg');
+    this_background.scale.x = 1.2;
+    container.addChild(this_background);
     huddy = PIXI.Sprite.from('./Assets/HUD.png');
     huddy.y = 295;
     huddy.scale.y = 1.6;
@@ -136,9 +137,9 @@ function createCanvas() {
     
 
     app.ticker.add(() => {
-        state = changeState(moveIsMade, enemyMove);
-        hudtext.text = state;
-        switch(state){
+        this_state = changeState(moveIsMade, enemyMove);
+        hudtext.text = this_state;
+        switch(this_state){
             case states.s1:
                 break;
             case states.s2:
@@ -233,7 +234,7 @@ function createButtons(myMons, opponentMons, nameText, hpText){
         thisMove[i] = myMons[0].moves[i];
         moveButtons[i].innerText = thisMove[i].name;
         moveButtons[i].addEventListener('click', () => {
-            if(state == 'choose a move'){
+            if(this_state == 'choose a move'){
                 console.log(opponentMons[enemyCurrent].hp);
                 opponentDamage = thisMove[i].doAttack(myMons[myCurrent], opponentMons[enemyCurrent]);
                 console.log(opponentMons[enemyCurrent].hp);
@@ -255,7 +256,7 @@ function createButtons(myMons, opponentMons, nameText, hpText){
         let thisMon = myMons[i];
         switchButtons[i].innerText = thisMon.name;
         switchButtons[i].addEventListener('click', () => {
-            if((state == 'choose a move' || faintException)&& !thisMon.checkFaint() && i != myCurrent){
+            if((this_state == 'choose a move' || faintException)&& !thisMon.checkFaint() && i != myCurrent){
                 console.log('switch to ' + thisMon.name);
                 myMons[myCurrent].status = 'none';
                 container.removeChild(myMons[myCurrent].sprite);
@@ -334,7 +335,7 @@ function createDivs(arrayOfSprites) {
             while (thebody.firstChild != null) {
                 thebody.removeChild(thebody.firstChild);
             }
-            createCanvas();
+            createThis();
         });
         userMenu.append(piece);
     });

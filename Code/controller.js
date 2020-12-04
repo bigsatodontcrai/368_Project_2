@@ -30,10 +30,10 @@ class controller {
         this.size++;
         if(e.key == 'a'){
             this.vy = 0;
-            this.vx = -3;
+            this.vx = -2;
         } else if (e.key == 'd'){
             this.vy = 0;
-            this.vx = 3;
+            this.vx = 2;
         } else if (e.key == 'w'){
             this.vx = 0;
             this.vy = -2;

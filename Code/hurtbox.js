@@ -48,13 +48,13 @@ class hurtBox {
      * calculateCharEdges - calcutlates the character's edges
      */
     calculateCharEdges(){
-        this.width = 16;
-        this.height = 28;
+        this.width = 5;
+        this.height = 10;
 
         this.rightEdge = this.sprite.x + 0.5 * this.width;
         this.leftEdge = this.sprite.x - 0.5 * this.width;
-        this.topEdge = this.sprite.y + (7/37) * this.sprite.height;
-        this.bottomEdge = this.sprite.y + (36/37) * this.sprite.height;
+        this.topEdge = this.sprite.y  + 3*this.height;
+        this.bottomEdge = this.sprite.y + this.sprite.height;
         this.topEdge = Math.floor(this.topEdge);
         this.bottomEdge = Math.floor(this.bottomEdge);
         this.rightEdge = Math.floor(this.rightEdge);
@@ -62,6 +62,11 @@ class hurtBox {
 
         this.x = this.leftEdge;
         this.y = this.topEdge;
+
+        console.log(this.x);
+        console.log(this.sprite.x);
+        console.log(this.y);
+        console.log(this.sprite.y);
 
         this.nextX = this.x;
         this.nextY = this.y;
@@ -234,7 +239,7 @@ class hurtBox {
         }
         if(vert != 0 && controller.vx == 0){
             if(vert < 0){
-                //alert('gangshit');
+                
                 box.touchingGround = true;
                 
             }

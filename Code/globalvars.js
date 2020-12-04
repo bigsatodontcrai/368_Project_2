@@ -7,7 +7,7 @@ const Textures = {
     Background: "./Assets/background.json"
 };
 
-const game = document.getElementById('game');
+/*const game = document.getElementById('game');
 
 game.height = 500;
 game.width = 500;
@@ -19,7 +19,7 @@ const app = new PIXI.Application(
         height: 16*30,
         backgroundColor: 0x410000
     }
-);
+);*/
 
 /**
  * healthCheck - checks how many hearts player has left and alerts them
@@ -43,7 +43,7 @@ function healthCheck ()
 const BG = PIXI.Sprite.from('./Assets/Background_1.png');
 BG.scale.x = 2;
 
-
+let overworld = true;
 let test2Invalid = 0;
 let coinDetect = 0;
 let bottom;
@@ -71,11 +71,14 @@ let coinCounter = 0;
 let amAttacking = false;
 let Goomba;
 
+let horizontal = 0;
+let vertical = -1;
+
 let levelIndex = 0;
 let platformArrayContainer = [];
 
 let resource;
-let container;
+let this_container;
 let background;
 let Forward = 1;
 let arrayOfIndex = new Array(8);
@@ -140,3 +143,83 @@ let coinSound;
 coinSound = new sound('./Assets/coineff.mp3');
 
 let enemyArray = [];
+let myMusic;
+
+function createThis() {
+
+    game = document.createElement('canvas');
+    game.className = 'game';
+
+    game.height = 1000;
+    game.width = 1000;
+    let thisbody = document.getElementById('bigboy');
+    thisbody.append(game);
+
+    app = new PIXI.Application(
+        {
+            view: game,
+            width: 16 * 60,
+            height: 16 * 30,
+            backgroundColor: 0x410000
+        }
+    );
+
+    
+    myMusic = new sound("./Code/Revenge_of_the_dungeon.mp3");
+    myMusic.play();
+
+    document.body.appendChild(app.view);
+
+    //const level = import('./Assets/Platforms.json');
+    container = new PIXI.Container();
+    text = new PIXI.Text('Bones: ' + coinCounter, { fontFamily: 'Helvetica', fontSize: 12, fill: 0xF00000, align: 'center' });
+    text.x = 16 * 4;
+
+
+    //makePlatforms(level);
+
+    let loadScene = PIXI.Loader.shared.add('./Code/Assets/ashlands_tileset.json');
+    let loadPlayer = PIXI.Loader.shared.add('./Code/Assets/rpg-girl.json');
+    let loadEnemy = PIXI.Loader.shared.add('./Code/Assets/Walk.json');
+
+    loadScene.load(() => {
+
+
+        constructFromArray(platformArray, false);
+        constructFromArray(platform2, false);
+        constructFromArray(platform3, true);
+
+        for (let i = 0; i < 3; i++) {
+            heartArray[i] = new PIXI.Sprite.from('./Code/Assets/heart.png');
+            heartArray[i].height = 8;
+            heartArray[i].width = 8;
+            heartArray[i].x = 16 * i + 3;
+            heartArray[i].y = 4;
+            container.addChild(heartArray[i]);
+        }
+
+        container.addChild(text);
+
+        //console.log(platformSprites);
+        //console.log(constantHurtBox);
+
+    });
+
+    loadEnemy.load(() => {
+
+    });
+
+    loadPlayer.load(() => {
+
+        playCharacter();
+
+
+        container.addChild(sprite);
+        
+        app.stage.addChild(container);
+        //app.stage.scale.set(1.5);
+        app.renderer.render(app.stage);
+
+    });
+
+}

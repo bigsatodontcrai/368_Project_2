@@ -78,7 +78,10 @@ function calculateForEnemy(opponentMons){
         let newIndex = opponentMons.findIndex(enemy => enemy.checkFaint() == false);
         console.log(newIndex);
         if (newIndex < 0) {
-            alert('you win');
+            myMusic.stop();
+            myMusic = new sound('./Code/victoryAtLast.mp3');
+            myMusic.play();
+            alert('You won! You defeated the beasts and avenged your friends. Congratulations!');
         } else {
             enemyCurrent = newIndex;
             container.addChild(opponentMons[enemyCurrent].sprite);

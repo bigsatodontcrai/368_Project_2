@@ -113,7 +113,7 @@ function newSpriteArray(box) {
  * @param {number} platformArray 
  */
 function constructFromArray(platformArray, immutable) {
-    let newResource = PIXI.Loader.shared.resources['./Assets/ashlands_tileset.json'].spritesheet;
+    let newResource = PIXI.Loader.shared.resources['./Code/Assets/ashlands_tileset.json'].spritesheet;
     for (let i = 0; i < 60 * 30; i++) {
         if (platformArray[i] != 0) {
 

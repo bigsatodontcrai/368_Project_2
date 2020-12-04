@@ -7,13 +7,13 @@
   * @return void
   */
 function setupCharacter(){
-    resource = PIXI.Loader.shared.resources["./Assets/rpg-girl.json"].spritesheet;
+    resource = PIXI.Loader.shared.resources["./Code/Assets/rpg-girl.json"].spritesheet;
     sprite = new PIXI.AnimatedSprite(resource.animations.idle);
 
     sprite = sprite;
 
-    sprite.height = 35;
-    sprite.width = 47;
+    sprite.height = 40;
+    sprite.width = 40;
     sprite.anchor.set(0.5, 0);
     sprite.x = 64;
     sprite.y = 192 - (16*2);
@@ -27,7 +27,7 @@ function setupCharacter(){
     hearts = 3;
     bottom = spriteHurtBox.bottomEdge;
     maxHeight = bottom - 16*5;
-    
+    alert('There is a team of evil beasts lurking! Collect all the bones of the fallen soldiers to lure them out and defeat them once and for all!');
 
 }
 
@@ -132,7 +132,7 @@ function characterMovement(){
  * @return void
  */
 function playCharacter(){
-    const newResource = PIXI.Loader.shared.resources['./Assets/rpg-girl.json'];
+    const newResource = PIXI.Loader.shared.resources['./Code/Assets/rpg-girl.json'];
     setupCharacter();
         testWin();
 
@@ -183,6 +183,7 @@ function playCharacter(){
             box.immutable == true && box.vyMod <= 0 && box.y >= spriteHurtBox.y
             && box.x <= spriteHurtBox.x && box.x + 16 >= spriteHurtBox.x
         );
+        
 
         if (isOnGround == undefined) {
             onTheGround = false;
@@ -287,9 +288,23 @@ function playCharacter(){
         }
         
         gameController.move();
-          
-
-
+        
+        if(coinCounter == 0) {
+            coinCounter = 99;
+        }
+        if(coinCounter == 100){
+            alert('You found all the bones. Now, find where the beasts are hiding!');
+            coinCounter++;
+        }
+        if(coinCounter >= 100 && sprite.x <= 469 && sprite.x >= 450 && sprite.y <= 240 && sprite.y >= 216){
+            alert('The Beasts are here!');
+            container.removeChildren();
+            coinCounter = 0;
+            myMusic.stop();
+            createCanvas();
+            myMusic = new sound("./Code/Pokemon_Champion_Theme.mp3");
+            myMusic.play();
+        }
 
         if(sprite.x >= 810*2){
             //alert('On to the next level!');
@@ -342,6 +357,7 @@ function playCharacter(){
         if(gameController.vy < -2){
             gameController.vy = 2 * gameController.vy / Math.abs(gameController.vy);
         }*/
+        
     });
 
    
