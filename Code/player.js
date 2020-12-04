@@ -289,9 +289,9 @@ function playCharacter(){
         
         gameController.move();
         
-        if(coinCounter == 0) {
+        /*if(coinCounter == 0) {
             coinCounter = 99;
-        }
+        }*/
         if(coinCounter == 100){
             alert('You found all the bones. Now, find where the beasts are hiding!');
             coinCounter++;
