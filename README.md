@@ -18,3 +18,6 @@ The object is to fight and defeat the beasts that ravage this place and kill any
 hiding spot of the creatures. You pick up a bone by simply walking over it. After collecting all 100 bones in the yard, you'll have to hunt for the hiding spot
 of these creatures. After that, you will fight against the creatures with your own creatures who you've tamed to fight on your side. Defeating these creatures
 is the final goal of this game.
+
+You can find EECS 448 Project 4 among my other public repositories, "Project_4" where there is documentation and important links. 
+For further reference, EECS 368 Project 1 is also available with a working GitHub Pages link under "368_Project_1"
