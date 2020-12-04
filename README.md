@@ -10,12 +10,11 @@ will engage in the battles using the Project 1 turn-based combat.
 
 While the physics, the controller, and the state handling differ from the platformer game, the tileset system and the method of animation can be built on
 to make this style of game. Both are tileset based so the character walks around tiles. However, collision is handled a bit differently. Since nothing is rotated,
-I can still use the already established Aligned Axis Bounding Box (AABB) collision method, but it will be a bit simpler in that I don't have to be concerned with
-diagional collisions as the character will not have 8-directional movement but only 4-directional. 
+I reuse the already established Aligned Axis Bounding Box (AABB) collision method. 
 
 The new elements that will be coded for this project are the controller, interaction with opponents, and linking the previous project with this project.
 
-WASD keys will be used to move in 4 directions of the map. The map will be a maze where you begin at the center. Players can walk faster if the K key is held down. Player can interact with characters by bumping
-into them. When the player interacts with an NPC, a dialogue will play, and then they will engage in battle. There are 5 characters and each will have the 
-teams that weren't picked in the introduction. After winning the battles, you will return to the overworld section. After losing the battle, the game will
-not return to the overworld section and you'll have to reload. 
+The object is to fight and defeat the beasts that ravage this place and kill anyone who walks here by collecting every bone in the yard and then finding the 
+hiding spot of the creatures. You pick up a bone by simply walking over it. After collecting all 100 bones in the yard, you'll have to hunt for the hiding spot
+of these creatures. After that, you will fight against the creatures with your own creatures who you've tamed to fight on your side. Defeating these creatures
+is the final goal of this game.
