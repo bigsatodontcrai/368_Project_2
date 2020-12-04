@@ -7,7 +7,7 @@
   * @return void
   */
 function setupCharacter(){
-    resource = PIXI.Loader.shared.resources["./Assets/adventurer-Sheet.json"].spritesheet;
+    resource = PIXI.Loader.shared.resources["./Assets/rpg-girl.json"].spritesheet;
     sprite = new PIXI.AnimatedSprite(resource.animations.idle);
 
     sprite = sprite;
@@ -23,7 +23,7 @@ function setupCharacter(){
     spriteHurtBox = new hurtBox(sprite);
     spriteHurtBox.calculateCharEdges();
     gameController = new controller(sprite);
-    testController();
+    //testController();
     hearts = 3;
     bottom = spriteHurtBox.bottomEdge;
     maxHeight = bottom - 16*5;
@@ -81,7 +81,7 @@ function characterMovement(){
         maxHeight = bottom - 16*4;
     }
     spriteHurtBox.updateHurtBox(gameController);
-    if (state == 'jumping') {
+    /*if (state == 'jumping') {
         if (bottom > spriteHurtBox.bottomEdge - 2 && spriteHurtBox.bottomEdge - 2 < maxHeight) {
             gameController.vy = 2;
         }
@@ -89,7 +89,7 @@ function characterMovement(){
             
 
         }
-    }
+    }*/
     try {
         arrayOfSprites = newSpriteArray(spriteHurtBox);
 
@@ -132,7 +132,7 @@ function characterMovement(){
  * @return void
  */
 function playCharacter(){
-    const newResource = PIXI.Loader.shared.resources['./Assets/adventurer-Sheet.json'];
+    const newResource = PIXI.Loader.shared.resources['./Assets/rpg-girl.json'];
     setupCharacter();
         testWin();
 
@@ -156,7 +156,8 @@ function playCharacter(){
             sprite.play();
         }
         if (e.key == 'm') {
-            amAttacking = true;
+            //amAttacking = true;
+           // sprite.animationSpeed = 2;
         }
 
 
@@ -190,14 +191,14 @@ function playCharacter(){
             onGroundCheck++;
             if (onGroundCheck == 2)
             {
-                onGroundy();
+                //onGroundy();
             }
         }
        // console.log(amAttacking);
         
-        if(onTheGround == false && state != 'jumping'){
+        /*if(onTheGround == false && state != 'jumping'){
             gameController.vy = 2;
-        } 
+        } */
         if(damageboost > 0) {
             damageboost -= app.ticker.deltaTime;
         }
@@ -294,7 +295,7 @@ function playCharacter(){
             //alert('On to the next level!');
             if (test2Invalid == 1)
             {
-                testFallOut();
+                //testFallOut();
                 test2Invalid++;
             }
             else if (test2Invalid > 1)
@@ -314,7 +315,7 @@ function playCharacter(){
 
        
 
-        if(spriteHurtBox.bottomEdge >= 16*15){
+        /*if(spriteHurtBox.bottomEdge >= 16*15){
             alert('you died.');
             sprite.x = 16;
             sprite.y = 192 - (16*8);
@@ -329,7 +330,7 @@ function playCharacter(){
                     container.addChild(heartArray[i]);
                 }
             }
-        }
+        }*/
         
        
         /*if(gameController.vy > 1){

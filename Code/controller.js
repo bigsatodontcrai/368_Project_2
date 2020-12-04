@@ -29,14 +29,20 @@ class controller {
         this.curr.push(e.key);
         this.size++;
         if(e.key == 'a'){
+            this.vy = 0;
             this.vx = -3;
-        } if (e.key == 'd'){
+        } else if (e.key == 'd'){
+            this.vy = 0;
             this.vx = 3;
-        } if (e.key == 'w'){
-            if(onTheGround){
-                this.vy = -2;
-            }
-        } 
+        } else if (e.key == 'w'){
+            this.vx = 0;
+            this.vy = -2;
+            
+        } else if(e.key == 's'){
+            this.vx = 0;
+            this.vy = 2;
+        }
+        
         return true;
          
     }
@@ -91,16 +97,19 @@ class controller {
             if (this.vy == 0) {
                 this.vx = 0;
             }
-        } if (e.key == 'w' && this.vy != 0) {
-            this.vy = 1;
+        } if (e.key == 'w') {
+            this.vy = 0;
         }
         if((e.key != 'd' || e.key != 'a') && this.vx != 0){
             this.vx = 0;
         }
         if(e.key == 'm'){
-            time = 0;
-            amAttacking = false;
+            //this.sprite.animationSpeed = 2;
         }
+        if (e.key == 's'){
+            this.vy = 0;
+        }
+        
     }
 
     /**

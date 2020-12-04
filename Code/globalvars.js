@@ -15,8 +15,8 @@ game.width = 500;
 const app = new PIXI.Application(
     {
         view: game,
-        width: 16*50,
-        height: 16*16,
+        width: 16*60,
+        height: 16*30,
         backgroundColor: 0x410000
     }
 );

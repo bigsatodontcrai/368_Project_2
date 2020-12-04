@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //makePlatforms(level);
 
     let loadScene = PIXI.Loader.shared.add('./Assets/AssetsOrig.json');
-    let loadPlayer = PIXI.Loader.shared.add('./Assets/adventurer-Sheet.json');
+    let loadPlayer = PIXI.Loader.shared.add('./Assets/rpg-girl.json');
     let loadEnemy = PIXI.Loader.shared.add('./Assets/Walk.json');
     
     loadScene.load(() => {

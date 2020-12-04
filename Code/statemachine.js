@@ -33,7 +33,7 @@ function updateState(vx, vy, sprite) {
         sprite.animationSpeed = 0.5;
         thisState = 'falling';
     } else if (vy < 0) {
-        sprite.animationSpeed = 0.1;
+        sprite.animationSpeed = 0.5;
         thisState = 'jumping';
     } else {
         sprite.animationSpeed = 0.1;
